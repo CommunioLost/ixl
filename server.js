@@ -1,0 +1,32 @@
+import express from 'express';
+import { createServer } from 'node:http';
+import { uvPath } from '@titaniumnetwork-dev/ultraviolet';
+import { createBareServer } from '@tomphttp/bare-server-node';
+import path from 'node:path';
+
+const app = express();
+const bare = createBareServer('/bare/');
+const server = createServer();
+const __dirname = path.resolve();
+
+app.use(express.static(__dirname));
+
+server.on('request', (req, res) => {
+    if (bare.shouldRoute(req)) {
+        bare.routeRequest(req, res);
+    } else {
+        app(req, res);
+    }
+});
+
+server.on('upgrade', (req, socket, head) => {
+    if (bare.shouldRoute(req)) {
+        bare.routeUpgrade(req, socket, head);
+    } else {
+        socket.end();
+    }
+});
+
+server.listen({ port: process.env.PORT || 3000 }, () => {
+    console.log('freedom networks live');
+});
