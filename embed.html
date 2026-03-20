@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>freedom networks - viewing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+        iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+    <iframe id="iframeid"></iframe>
+
+    <script src="uv/uv.bundle.js"></script>
+    <script src="uv/uv.config.js"></script>
+    <script>
+        const encodedUrl = sessionStorage.getItem("encodedUrl");
+        const iframe = document.getElementById("iframeid");
+        
+        // Tells UV to load the site inside the iframe
+        if (encodedUrl) {
+            iframe.src = __uv$config.prefix + encodedUrl;
+        }
+    </script>
+</body>
+</html>
