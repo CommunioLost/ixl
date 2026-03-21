@@ -1,0 +1,79 @@
+/* freedom networks - official stylesheet */
+
+:root {
+    --bg-color: #0a0a0a;
+    --text-color: #ffffff;
+    --accent-color: #ff3e3e; /* devil bear red */
+    --secondary-bg: #1a1a1a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* No corners allowed */
+    border-radius: 0 !important; 
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive; /* The vibe we discussed */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+.title {
+    font-size: 3rem;
+    text-transform: lowercase;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+#splash {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 30px;
+    min-height: 1.2rem;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 15px 20px;
+    background: var(--secondary-bg);
+    border: 2px solid #333;
+    color: white;
+    font-size: 1.2rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: var(--accent-color);
+}
+
+/* iframe / viewing page styles */
+iframe {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
